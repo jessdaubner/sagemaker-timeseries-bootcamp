@@ -79,7 +79,7 @@ Multiple time series is similar to the notion of a multivariate time series in t
 * i.e., a multivariate time series is treating the time series of tourists, their luggage, their lengths of stay, etc. as a single observation in vector form; by contrast, an example of a multiple time series problem would be looking at product sales across an entire company, like Amazon.com
   * each of the millions of products on Amazon.com would have its own distinct time series, which is used to make the forecast
 
-## NNs Solve Challenges with Classical Forecasting Methods
+## Neural Networks Resolve Problems with Classical Forecasting Methods
 Classical forecasting models fit a single model to each individual time series and then use that model to extrapolate the time series into the future
 
 Examples of classical forecasting models:
@@ -102,7 +102,32 @@ NN can learn that order matters, can pursue nonlinearities, and understand compl
   * makes neural networks less computationally expensive than combinatorial non-linear modeling, which in high-dimensional problems is not a feasible option
 
 ## Neural Network Concepts
+NN capture non-linear, complex dependencies
+* Raw input is reformatted into a dense representation
+*  _Dense representation_: final vector passed as input into the neural network, which is the result of mapping original inputs and formats into a lower dimensional, non-sparse vector
+  * examples of dense representations:
+    * combining multiple inputs into a single vector form
+    * Word2Vec, which maps natural language text into numerical vectors based on semantically similar words, as opposed to one-hot encoded vectors, which would be high-dimensional and sparse
+* Neural networks introduce layers (that is, hidden layers), which introduce non-linear combinations of the inputs as outputted nodes
+  * Nodes with activation functions exceeding a threshold are kept on
+  * Thus the neural network is learning the nodes which best capture the non-linear complexities.
 
 ### Long-Term Dependency Problem
+Traditional neural networks don't solve the long-term dependency problem
+* Many problems in machine learning require you to consider the sequence, or order, of your inputs and the long-term dependencies that may exist between inputs and outputs
+* Think of a long-term dependency as a data point that’s related to another data point that’s far away in the sequence of data points
+  * In other words, it’s not immediately obvious that the two data points are related
+* Language is an example of a long-term dependency problem
+  * The logic of a sequence is formed from the order of its words
+  * A different language will have a different logic formed
+  * In predicting the next word, the model must understand how far back its dependency goes
+* Example: "The girl grew up in **Italy**...Her first language is **Italian**"
+  * Order of inputs matter (Italy)
+  * Long-term dependency on country cited earlier (Italian)
+  * To forecast Italian as the correct language in this text, a model must learn its link to the country that the girl grew up in, which appears earlier in the text
+  * These types of problems are made even harder when they consist of sequences of variable length
+
 ### RNNs
+RNNs get you a step closer to solving the long-term dependency problem
+
 ### Vanishing Gradient and LSTM
